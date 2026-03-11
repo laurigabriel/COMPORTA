@@ -1,0 +1,437 @@
+<html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPORTA - Formação em Maturidade Profissional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <style>
+        body {
+            font-family: 'Figtree', sans-serif;
+            background-color: #E8E4DC;
+            color: #2A2520;
+            overflow-x: hidden;
+        }
+        
+        .font-editorial {
+            font-family: 'Besley', serif;
+        }
+
+        /* Subtle grain texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Entrance Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes scaleOutline {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .animate-scale-outline { animation: scaleOutline 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: center; }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+
+        /* Smooth scroll behavior */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#DC5A28] selection:text-white flex flex-col min-h-screen">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-[#E8E4DC]/90 backdrop-blur-sm border-b border-[#E0DDD6]">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="font-editorial text-xl tracking-tight uppercase font-normal text-[#2A2520]">Comporta</span>
+            <a href="#checkout" class="bg-[#DC5A28] text-white text-base tracking-tight uppercase px-5 py-2.5 rounded-full hover:bg-[#C44E20] transition-colors">
+                Garantir minha vaga
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="pt-40 pb-24 px-6 relative flex flex-col items-center justify-center text-center">
+        <div class="max-w-7xl mx-auto w-full z-10 flex flex-col items-center">
+            <div class="max-w-4xl w-full mx-auto space-y-6">
+                <h1 class="font-editorial text-6xl md:text-8xl tracking-tighter text-[#2A2520] leading-[0.9] flex flex-col animate-fade-up">
+                    <span class="font-medium uppercase tracking-tighter">Código Comporta</span>
+                    <span class="font-light italic text-4xl md:text-6xl mt-6 md:mt-8 text-[#4A4A4A] tracking-tighter">Formação em maturidade profissional.</span>
+                </h1>
+            </div>
+
+            <!-- Video Player Placeholder -->
+            <div class="w-full max-w-4xl mx-auto mt-16 aspect-video bg-[#DAD5CB]/40 rounded-xl border border-[#E0DDD6] flex items-center justify-center relative shadow-sm animate-fade-in delay-200 overflow-hidden group cursor-pointer">
+                <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
+                <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+                    <i data-lucide="play" style="stroke-width: 1.5px;" class="w-6 h-6 text-[#2A2520] ml-1"></i>
+                </div>
+                <!-- Faux player UI -->
+                <div class="absolute bottom-0 left-0 w-full p-4 flex items-center gap-4 bg-gradient-to-t from-black/20 to-transparent">
+                    <div class="h-1 flex-1 bg-white/30 rounded-full overflow-hidden">
+                        <div class="w-1/3 h-full bg-white/70"></div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-2xl md:text-3xl text-[#6B6560] max-w-2xl mx-auto leading-relaxed animate-fade-up delay-400 mt-12 tracking-tight font-light">
+                O mercado não rejeita por falta de talento.<br>
+                Rejeita por falta de maturidade profissional.
+            </p>
+        </div>
+    </section>
+
+    <!-- AGITATION SPLIT -->
+    <section class="py-24 px-6 bg-[#DAD5CB]/30 border-y border-[#E0DDD6]">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <h2 class="font-editorial text-4xl md:text-5xl tracking-tight text-[#2A2520] leading-tight font-normal">
+                A faculdade forma tecnicamente.<br>
+                O mercado exige maturidade.
+            </h2>
+            <div class="text-xl text-[#4A4A4A] space-y-6 leading-relaxed font-light">
+                <p>
+                    O jovem que a empresa admira e quer contratar não é necessariamente o mais bem-formado. É o que sabe se posicionar, receber feedbacks, assumir responsabilidade — mais por comportamento do que por conhecimento.
+                </p>
+                <p>
+                    A maturidade profissional é o que separa quem cresce de quem estagna.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN - EMOTIONAL BLOCK -->
+    <section class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            
+            <!-- Left: Visual Concept -->
+            <div class="flex flex-col items-center justify-center bg-[#DC5A28]/[0.02] aspect-square rounded-2xl relative">
+                <div class="relative flex items-center justify-center w-full h-full">
+                    <!-- Solid inner circle (What you are) -->
+                    <svg viewBox="0 0 200 200" class="w-24 h-24 md:w-32 md:h-32 absolute z-10">
+                        <circle cx="100" cy="100" r="40" fill="#2A2520"></circle>
+                    </svg>
+                    <!-- Outline outer circle (What you could be perceived as) -->
+                    <svg viewBox="0 0 200 200" class="w-48 h-48 md:w-64 md:h-64 absolute animate-scale-outline">
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#2A2520" stroke-width="1" stroke-dasharray="4 4" class="opacity-40"></circle>
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#2A2520" stroke-width="1.5" class="opacity-10"></circle>
+                    </svg>
+                </div>
+                <span class="absolute bottom-8 text-base text-[#8A8A8A] tracking-tight lowercase font-light">o que você é vs. o que percebem</span>
+            </div>
+
+            <!-- Right: Copy -->
+            <div class="space-y-8">
+                <h3 class="font-editorial text-3xl md:text-4xl tracking-tight text-[#2A2520] leading-tight font-normal">
+                    Você se sente capaz.<br>
+                    <span class="text-[#6B6560]">Mas não é percebido como alguém preparado.</span>
+                </h3>
+                <div class="text-2xl text-[#6B6560] space-y-5 leading-relaxed font-light tracking-tight">
+                    <p>O jovem que tenta fazer "mais do mesmo" na entrevista falha.</p>
+                    <p>Fala mais rápido mas não consegue ir mais rápido.</p>
+                    <p>Faz o que pedem, mas não é lembrado para oportunidades.</p>
+                    <p class="pt-4 text-[#2A2520] font-normal">O problema não é competência.<br>É maturidade profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET DOESN'T TEACH - CARDS -->
+    <section class="py-24 px-6 bg-[#DAD5CB]/20 border-t border-[#E0DDD6]">
+        <div class="max-w-7xl mx-auto w-full">
+            <h3 class="font-editorial text-3xl md:text-4xl tracking-tight text-[#2A2520] mb-16 text-center font-normal">O mercado não ensina:</h3>
+            
+            <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+                
+                <!-- Card 1 -->
+                <div class="bg-[#E8E4DC] border border-[#E0DDD6] rounded-lg p-10 hover:-translate-y-1 transition-transform group flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                    <i data-lucide="users" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#A09B94] mb-6 group-hover:text-[#DC5A28] transition-colors"></i>
+                    <p class="font-editorial text-xl md:text-2xl tracking-tight text-[#2A2520] leading-snug font-normal">Como se posicionar em reuniões</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-[#E8E4DC] border border-[#E0DDD6] rounded-lg p-10 hover:-translate-y-1 transition-transform group flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                    <i data-lucide="message-circle-check" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#A09B94] mb-6 group-hover:text-[#DC5A28] transition-colors"></i>
+                    <p class="font-editorial text-xl md:text-2xl tracking-tight text-[#2A2520] leading-snug font-normal">Como receber e dar feedbacks</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-[#E8E4DC] border border-[#E0DDD6] rounded-lg p-10 hover:-translate-y-1 transition-transform group flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                    <i data-lucide="hand" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#A09B94] mb-6 group-hover:text-[#DC5A28] transition-colors"></i>
+                    <p class="font-editorial text-xl md:text-2xl tracking-tight text-[#2A2520] leading-snug font-normal">Como discordar sem parecer imaturo</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-[#E8E4DC] border border-[#E0DDD6] rounded-lg p-10 hover:-translate-y-1 transition-transform group flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                    <i data-lucide="shield-check" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#A09B94] mb-6 group-hover:text-[#DC5A28] transition-colors"></i>
+                    <p class="font-editorial text-xl md:text-2xl tracking-tight text-[#2A2520] leading-snug font-normal">Como assumir responsabilidade sem se sobrecarregar</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-[#E8E4DC] border border-[#E0DDD6] rounded-lg p-10 hover:-translate-y-1 transition-transform group flex flex-col items-center justify-center text-center w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+                    <i data-lucide="crown" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#A09B94] mb-6 group-hover:text-[#DC5A28] transition-colors"></i>
+                    <p class="font-editorial text-xl md:text-2xl tracking-tight text-[#2A2520] leading-snug font-normal">Como construir autoridade mesmo sendo júnior</p>
+                </div>
+
+            </div>
+
+            <p class="text-center mt-20 text-2xl font-editorial italic text-[#6B6560] tracking-tight">De agora em diante, você vai saber.</p>
+        </div>
+    </section>
+
+    <!-- ACRONYM - MASSIVE TYPOGRAPHY (THE CLIMAX) -->
+    <section class="py-24 md:py-32 px-6 border-y border-[#E0DDD6] overflow-hidden relative">
+        <div class="max-w-7xl mx-auto w-full relative">
+            
+            <!-- Top Labels -->
+            <div class="flex justify-between items-center border-b border-[#A09B94]/30 pb-4 mb-16 text-base text-[#A09B94] tracking-tight uppercase font-normal">
+                <span>Um método estruturado em 7 pilares.</span>
+                <span>Código Comporta</span>
+            </div>
+
+            <!-- The Acronym Structure -->
+            <div class="flex flex-col space-y-2 w-full uppercase relative">
+                
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">C</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">OMUNICAÇÃO</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">O</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">RGANIZAÇÃO</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">M</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">ATURIDADE EMOCIONAL</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">P</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">OSTURA</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">O</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">BSERVAÇÃO</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">R</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">ESPONSABILIDADE</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">T</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">ÁTICA</span>
+                </div>
+
+                <div class="flex flex-wrap items-baseline w-full leading-[0.85] group cursor-default">
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#2A2520] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">A</span>
+                    <span class="text-5xl md:text-7xl lg:text-8xl font-normal text-[#A09B94] tracking-tight transition-colors duration-300 group-hover:text-[#DC5A28]">TITUDE</span>
+                </div>
+
+                <!-- Floating Resolution Text (Desktop absolute, Mobile static below) -->
+                <div class="hidden lg:block absolute right-0 bottom-4 max-w-sm normal-case">
+                    <p class="text-3xl text-[#2A2520] leading-snug font-light text-left tracking-tight">
+                        Como o mercado funciona<br>
+                        e como agir dentro dele.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Mobile Resolution Text -->
+            <div class="block lg:hidden mt-16 text-left border-t border-[#A09B94]/30 pt-8">
+                <p class="text-3xl text-[#2A2520] leading-snug font-light tracking-tight">
+                    Como o mercado funciona<br>
+                    e como agir dentro dele.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODULES -->
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto w-full">
+            <h3 class="font-editorial text-3xl md:text-4xl tracking-tight text-[#2A2520] mb-12 font-normal">Você vai entender:</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E0DDD6] border border-[#E0DDD6] rounded-xl overflow-hidden">
+                
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="route" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#8A8A8A] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Primeiros Passos</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">Como agir nos primeiros 30 dias de experiência e estabelecer sua base.</p>
+                </div>
+
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="pen-square" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#8A8A8A] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Aprenda na Prática</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">Como lidar com erros e absorver feedbacks sem levar para o lado pessoal.</p>
+                </div>
+
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="megaphone" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#8A8A8A] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Fale com Peso</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">A tática exata para falar em reuniões mesmo sendo o mais novo da sala.</p>
+                </div>
+
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="message-circle" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#8A8A8A] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Comunicação Tática</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">Aprenda a documentar e reportar resultados antes que sejam cobrados.</p>
+                </div>
+
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="eye" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#8A8A8A] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Visibilidade Estratégica</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">Como expor seu trabalho sem parecer arrogante ou bajulador.</p>
+                </div>
+
+                <div class="bg-[#E8E4DC] p-8 space-y-4">
+                    <i data-lucide="trending-up" style="stroke-width: 1.5px;" class="w-8 h-8 text-[#DC5A28] block"></i>
+                    <h4 class="font-editorial text-xl tracking-tight text-[#2A2520] font-normal">Pronto para crescer</h4>
+                    <p class="text-lg text-[#6B6560] leading-relaxed font-light">Você deixa de ser o "jovem promissor" e passa a ser visto como alguém indispensável.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHORITY -->
+    <section class="py-24 px-6 bg-[#DAD5CB]/40 border-t border-[#E0DDD6]">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 order-2 md:order-1 lg:pr-12">
+                <h3 class="font-editorial text-3xl md:text-4xl tracking-tight text-[#2A2520] leading-tight font-normal">
+                    Não ensino isso por teoria.
+                </h3>
+                <div class="text-2xl text-[#6B6560] space-y-4 font-light leading-relaxed tracking-tight">
+                    <p>
+                        Há mais de 10 anos lidero times, desenvolvo profissionais e formo pessoas que hoje ocupam posições estratégicas.
+                    </p>
+                    <p class="font-normal text-[#2A2520]">
+                        Eu vivo o mercado real. Sei exatamente o que os gestores procuram quando decidem quem vão promover.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Abstract Image Placeholder -->
+            <div class="aspect-[4/5] bg-[#E8E4DC] rounded-xl border border-[#E0DDD6] p-4 order-1 md:order-2 relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#DAD5CB]/50 to-transparent"></div>
+                <!-- Suggestion of a figure/structure -->
+                <div class="absolute bottom-0 right-8 w-3/4 h-3/4 border-t border-l border-[#A09B94] rounded-tl-3xl opacity-30"></div>
+                <div class="absolute top-8 left-8">
+                    <i data-lucide="circle-user" style="stroke-width: 1px;" class="w-16 h-16 text-[#A09B94]"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING + CTA (DARK SECTION) -->
+    <section id="checkout" class="py-32 px-6 bg-[#6B6560] text-[#E8E4DC] relative">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+            
+            <!-- Left: Deliverables -->
+            <div class="lg:col-span-7 space-y-8 lg:pr-8">
+                <h2 class="font-editorial text-4xl md:text-5xl tracking-tight text-white mb-12 font-normal">O que você leva agora:</h2>
+                
+                <ul class="space-y-6">
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="circle-check" style="stroke-width: 1.5px;" class="w-6 h-6 text-[#A09B94] mt-0.5 shrink-0"></i>
+                        <div>
+                            <span class="block font-normal text-white tracking-tight text-xl">Postura profissional</span>
+                            <span class="text-lg text-[#DAD5CB] font-light">De jovem promissor a profissional reconhecido.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="circle-check" style="stroke-width: 1.5px;" class="w-6 h-6 text-[#A09B94] mt-0.5 shrink-0"></i>
+                        <div>
+                            <span class="block font-normal text-white tracking-tight text-xl">Estratégia em Reuniões</span>
+                            <span class="text-lg text-[#DAD5CB] font-light">Como se posicionar quando tem menos experiência que os outros.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="circle-check" style="stroke-width: 1.5px;" class="w-6 h-6 text-[#A09B94] mt-0.5 shrink-0"></i>
+                        <div>
+                            <span class="block font-normal text-white tracking-tight text-xl">Absorção de Feedback</span>
+                            <span class="text-lg text-[#DAD5CB] font-light">Como recebê-lo como um aliado estratégico, não como um ataque.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <i data-lucide="circle-check" style="stroke-width: 1.5px;" class="w-6 h-6 text-[#A09B94] mt-0.5 shrink-0"></i>
+                        <div>
+                            <span class="block font-normal text-white tracking-tight text-xl">Imagem Profissional Intencional</span>
+                            <span class="text-lg text-[#DAD5CB] font-light">O que as pessoas dizem sobre você quando você não está na sala.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right: Pricing Box -->
+            <div class="lg:col-span-5 bg-[#4A4A4A]/40 border border-[#A09B94]/30 rounded-2xl p-8 md:p-12 text-center backdrop-blur-sm relative overflow-hidden">
+                <!-- Highlight Ribbon -->
+                <div class="absolute top-0 inset-x-0 h-1 bg-[#DC5A28]"></div>
+
+                <div class="mb-4">
+                    <span class="text-lg text-[#A09B94] line-through decoration-[#A09B94]/50">De R$ 197,00</span>
+                    <p class="text-lg font-light text-[#DAD5CB] mt-1">por apenas</p>
+                </div>
+                
+                <div class="font-editorial text-6xl md:text-7xl font-medium text-white tracking-tighter mb-2">
+                    R$ 97,00
+                </div>
+                
+                <div class="text-xl text-[#DAD5CB] font-light mb-8">
+                    ou 10x de R$ 9,70
+                </div>
+
+                <div class="bg-[#DAD5CB]/10 border border-[#DAD5CB]/20 rounded-lg py-3 px-4 mb-8 text-base text-[#DAD5CB] tracking-tight font-light">
+                    <span class="font-normal text-white">Bônus Lançamento:</span> Se decidir agora, ganhe uma mentoria gratuita no primeiro mês.
+                </div>
+
+                <button class="w-full bg-[#DC5A28] text-white font-normal tracking-tight rounded-full py-5 text-lg hover:bg-[#C44E20] transition-colors shadow-sm focus:ring-4 focus:ring-[#DC5A28]/30 outline-none">
+                    Garantir minha vaga
+                </button>
+
+                <div class="flex items-center justify-center gap-2 mt-6 text-base text-[#A09B94] font-light">
+                    <i data-lucide="shield-check" style="stroke-width: 1.5px;" class="w-5 h-5"></i>
+                    <span>Garantia incondicional de 7 dias.</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#4A4A4A] border-t border-[#A09B94]/20 py-12 text-center text-base text-[#A09B94] font-light tracking-tight mt-auto">
+        <div class="max-w-7xl mx-auto w-full px-6">
+            <span class="font-editorial text-lg tracking-tighter uppercase font-normal text-[#DAD5CB] block mb-4">Comporta</span>
+            <p>Formação em Maturidade Profissional © 2024. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body></html>
