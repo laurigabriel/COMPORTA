@@ -69,9 +69,9 @@
 
     <!-- NAV -->
     <nav class="fixed top-0 left-0 w-full z-50 transition-colors duration-300 bg-[#E8E4DC]/90 backdrop-blur-sm border-b border-[#E0DDD6]">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="font-editorial text-xl tracking-tight uppercase font-normal text-[#2A2520]">Comporta</span>
-            <a href="#checkout" class="bg-[#DC5A28] text-white text-base tracking-tight uppercase px-5 py-2.5 rounded-full hover:bg-[#C44E20] transition-colors">
+        <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+            <span class="font-editorial text-lg md:text-xl tracking-tight uppercase font-normal text-[#2A2520]">Comporta</span>
+            <a href="#checkout" class="border border-[#DC5A28] bg-transparent text-[#DC5A28] md:bg-[#DC5A28] md:text-white text-xs md:text-base font-medium tracking-tight uppercase px-4 py-2 flex items-center justify-center md:px-5 md:py-2.5 rounded-full hover:bg-[#DC5A28] hover:text-white md:hover:bg-[#C44E20] transition-colors shadow-sm md:shadow-none">
                 Garantir minha vaga
             </a>
         </div>
@@ -83,28 +83,33 @@
         <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto w-full z-10 flex flex-col items-center">
-            <div class="max-w-4xl w-full mx-auto space-y-6">
+            
+            <!-- H1 / Subhead -->
+            <div class="w-full flex flex-col items-center order-1 mt-4 md:mt-0">
                 <h1 class="font-editorial tracking-tighter text-[#2A2520] leading-[0.9] flex flex-col animate-fade-up w-full items-center">
                     <span class="font-medium uppercase tracking-tighter text-[50px] md:text-[80px] leading-[0.8] mb-1 md:mb-2">CÓDIGO</span>
                     <span class="font-medium uppercase tracking-tighter text-[50px] md:text-[80px] leading-[0.8]">COMPORTA</span>
-                    <span class="font-light italic text-[28px] md:text-[36px] mt-4 md:mt-6 text-[#4A4A4A] tracking-tighter leading-tight">Formação em maturidade profissional.</span>
+                    <span class="font-light italic text-[28px] md:text-[36px] mt-4 md:mt-6 text-[#4A4A4A] tracking-tighter leading-tight text-center px-4 md:px-0">Formação em maturidade profissional.</span>
                 </h1>
-
-                <p class="text-base md:text-lg text-[#6B6560] max-w-xl mx-auto leading-snug animate-fade-up delay-200 mt-6 tracking-tight font-light text-center">
-                    O mercado não rejeita jovens por falta de talento.<br>
-                    Rejeita por falta de maturidade profissional.
-                </p>
-
-                <div class="animate-fade-up delay-300 mt-8 mb-4">
-                    <a href="#checkout" class="inline-block bg-[#DC5A28] text-white text-sm md:text-base tracking-tight uppercase px-6 py-3 rounded-full hover:bg-[#C44E20] transition-colors shadow-sm font-medium">
-                        Garantir minha vaga
-                    </a>
-                </div>
             </div>
 
-            <!-- Video Player Placeholder -->
-            <div class="w-full max-w-4xl mx-auto mt-12 md:mt-16 aspect-video bg-[#313131] rounded-2xl shadow-xl animate-fade-in delay-400 overflow-hidden group cursor-pointer border border-white/10">
+            <!-- Video Player -->
+            <div class="w-full max-w-4xl mx-auto mt-10 md:mt-12 aspect-video bg-[#313131] rounded-2xl shadow-xl animate-fade-in delay-400 overflow-hidden group cursor-pointer border border-white/10 order-2 md:order-4 z-20">
             </div>
+
+            <!-- Description -->
+            <p class="text-[17px] md:text-lg text-[#6B6560] max-w-xl mx-auto leading-snug animate-fade-up delay-200 mt-8 md:mt-10 tracking-tight font-light text-center px-4 md:px-0 order-3 md:order-2">
+                O mercado não rejeita jovens por falta de talento.<br>
+                Rejeita por falta de maturidade profissional.
+            </p>
+
+            <!-- Large Button -->
+            <div class="animate-fade-up delay-300 mt-8 mb-6 order-4 md:order-3 w-full md:w-auto px-6 md:px-0">
+                <a href="#checkout" class="flex md:inline-flex items-center justify-center bg-[#DC5A28] text-white text-base tracking-tight uppercase px-6 py-4 md:py-3 rounded-full hover:bg-[#C44E20] transition-colors shadow-md font-medium text-center w-full">
+                    Garantir minha vaga
+                </a>
+            </div>
+
         </div>
     </section>
         </div>
@@ -119,8 +124,13 @@
             </h2>
             <div class="text-[20px] text-[#4A4A4A] space-y-6 leading-relaxed font-light">
                 <p>
-                    1 em cada 6 empresas já admite hesitação em contratar recém-formados.<br>
-                    Não por falta de diploma, mas por comportamento.
+                    1 em cada 6 empresas já hesita em contratar recém-formados.
+                </p>
+                <p>
+                    Não por falta de diploma. Por comportamento.
+                </p>
+                <p>
+                    A pergunta não é se você tem capacidade. É se o mercado consegue enxergar isso em você.
                 </p>
             </div>
         </div>
