@@ -3,8 +3,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>COMPORTA - Formação em Maturidade Profissional</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Tailwind CDN (necessário síncrono para evitar FOUC) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide movido para o final do body com defer -->
+    <!-- Fontes: preconnect + swap já configurados -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Besley:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
@@ -47,8 +49,10 @@
         }
 
 
-        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
-        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        /* opacity controlada apenas pelo keyframe (animation-fill-mode:both)
+           para que o browser consiga identificar o LCP antes da primeira paint */
+        .animate-fade-up { animation: fadeUp 0.6s ease-out both; }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out both; }
         .animate-scale-outline { animation: scaleOutline 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; transform-origin: center; }
         
         .delay-100 { animation-delay: 100ms; }
@@ -99,7 +103,8 @@
             
             <!-- H1 / Subhead -->
             <div class="w-full flex flex-col items-center order-1 mt-4 md:mt-0">
-                <h1 class="font-editorial tracking-tighter text-[#2A2520] leading-[0.9] flex flex-col animate-fade-up w-full items-center">
+                <!-- LCP element: sem classe de animação para ser visível no primeiro paint -->
+                <h1 class="font-editorial tracking-tighter text-[#2A2520] leading-[0.9] flex flex-col w-full items-center">
                     <span class="font-medium uppercase tracking-tighter text-[50px] md:text-[80px] leading-[0.8] mb-1 md:mb-2">CÓDIGO</span>
                     <span class="font-medium uppercase tracking-tighter text-[50px] md:text-[80px] leading-[0.8]">COMPORTA</span>
                     <span class="font-light italic text-[28px] md:text-[36px] mt-4 md:mt-6 text-[#4A4A4A] tracking-tighter leading-tight text-center px-4 md:px-0">Formação em maturidade profissional.</span>
@@ -542,6 +547,14 @@
                 window.location.href = redirectBase + (qs ? '?' + qs : '');
             });
         })();
+    </script>
+
+    <!-- Lucide: carregado no final do body com defer para não bloquear o render -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
     </script>
 
 </body></html>
