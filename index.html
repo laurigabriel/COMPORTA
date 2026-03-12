@@ -432,9 +432,37 @@
                     Se inscrevendo agora, ganhe uma mentoria gratuita comigo: vou reservar uma hora pra você na minha agenda.
                 </div>
 
-                <button class="w-full bg-[#DC5A28] text-white font-normal tracking-tight rounded-full py-5 text-lg hover:bg-[#C44E20] transition-colors shadow-sm focus:ring-4 focus:ring-[#DC5A28]/30 outline-none">
-                    Garantir minha vaga
-                </button>
+                <!-- Formulário de inscrição com captura de UTMs -->
+                <form id="checkout-form" novalidate class="space-y-3">
+
+                    <!-- Hidden UTM inputs -->
+                    <input type="hidden" name="utm_source"   id="utm_source">
+                    <input type="hidden" name="utm_medium"   id="utm_medium">
+                    <input type="hidden" name="utm_campaign" id="utm_campaign">
+                    <input type="hidden" name="utm_term"     id="utm_term">
+                    <input type="hidden" name="utm_content"  id="utm_content">
+
+                    <input
+                        type="text"
+                        name="name"
+                        id="form-name"
+                        placeholder="Seu nome completo"
+                        required
+                        class="w-full bg-[#4A4A4A]/40 border border-[#A09B94]/40 rounded-xl py-4 px-5 text-white placeholder-[#A09B94] text-base font-light tracking-tight outline-none focus:border-[#DC5A28]/70 transition-colors"
+                    >
+                    <input
+                        type="email"
+                        name="email"
+                        id="form-email"
+                        placeholder="Seu melhor e-mail"
+                        required
+                        class="w-full bg-[#4A4A4A]/40 border border-[#A09B94]/40 rounded-xl py-4 px-5 text-white placeholder-[#A09B94] text-base font-light tracking-tight outline-none focus:border-[#DC5A28]/70 transition-colors"
+                    >
+
+                    <button type="submit" class="w-full bg-[#DC5A28] text-white font-normal tracking-tight rounded-full py-5 text-lg hover:bg-[#C44E20] transition-colors shadow-sm focus:ring-4 focus:ring-[#DC5A28]/30 outline-none mt-1">
+                        Garantir minha vaga
+                    </button>
+                </form>
 
                 <div class="flex items-center justify-center gap-2 mt-6 text-base text-[#A09B94] font-light">
                     <i data-lucide="shield-check" style="stroke-width: 1.5px;" class="w-5 h-5"></i>
@@ -455,6 +483,58 @@
 
     <script>
         lucide.createIcons();
+
+        // ─── UTM Capture & Form Handler ───────────────────────────────────────
+        // WEBHOOK_URL = 'https://SEU_WEBHOOK_AQUI'
+
+        (function () {
+            // 1. Captura UTMs da URL atual
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+            utmKeys.forEach(function (key) {
+                var value = urlParams.get(key) || '';
+                var el = document.getElementById(key);
+                if (el) el.value = value;
+                // Persiste na sessionStorage para manter em possíveis redirects internos
+                if (value) sessionStorage.setItem(key, value);
+                else if (sessionStorage.getItem(key)) el.value = sessionStorage.getItem(key);
+            });
+
+            // 2. Handler de envio do formulário
+            var form = document.getElementById('checkout-form');
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                var formData = new FormData(form);
+                var payload = {};
+                formData.forEach(function (v, k) { payload[k] = v; });
+
+                // 3. Enviar para webhook (descomentar quando o endpoint estiver pronto)
+                // fetch(WEBHOOK_URL, {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(payload)
+                // });
+
+                // 4. Montar URL de redirecionamento com UTMs
+                var redirectBase = 'https://google.com';
+                var utmParams = new URLSearchParams();
+                utmKeys.forEach(function (key) {
+                    if (payload[key]) utmParams.set(key, payload[key]);
+                });
+
+                var qs = utmParams.toString();
+                window.location.href = redirectBase + (qs ? '?' + qs : '');
+            });
+        })();
     </script>
 
 </body></html>
