@@ -76,6 +76,22 @@
 
         /* Smooth scroll behavior */
         html { scroll-behavior: smooth; }
+
+        /* ─── Scroll Reveal ─────────────────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Respeita preferência de movimento reduzido */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-[#DC5A28] selection:text-white flex flex-col min-h-screen">
@@ -545,6 +561,81 @@
 
                 var qs = utmParams.toString();
                 window.location.href = redirectBase + (qs ? '?' + qs : '');
+            });
+        })();
+
+        // ─── Scroll Reveal — Intersection Observer puro ───────────────────────
+        (function () {
+            var vh = window.innerHeight;
+
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('revealed');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+            // Só aplica .reveal a elementos abaixo do viewport inicial
+            // (protege o LCP: elementos já visíveis entram com opacity 1)
+            function setup(el, delay) {
+                if (!el || el.classList.contains('reveal')) return;
+                var top = el.getBoundingClientRect().top;
+                if (top > vh * 0.9) {
+                    el.classList.add('reveal');
+                    if (delay) el.style.transitionDelay = delay + 'ms';
+                }
+                io.observe(el);
+            }
+
+            // Aplica stagger nos filhos diretos de um container
+            function staggerChildren(container, step) {
+                Array.from(container.children).forEach(function (child, i) {
+                    setup(child, i * (step || 80));
+                });
+            }
+
+            // Itera sobre todas as sections exceto a hero (primeira)
+            var sections = Array.from(document.querySelectorAll('section')).slice(1);
+
+            sections.forEach(function (section) {
+
+                // Títulos
+                section.querySelectorAll('h2, h3, h4').forEach(function (el) {
+                    setup(el, 0);
+                });
+
+                // Parágrafos diretos das divisões de layout
+                section.querySelectorAll(':scope > div > p, :scope > div > div > p').forEach(function (el) {
+                    setup(el, 80);
+                });
+
+                // ─ Cards (flex-wrap container) — stagger
+                section.querySelectorAll('div.flex.flex-wrap').forEach(function (container) {
+                    staggerChildren(container, 80);
+                });
+
+                // ─ Módulos (grid container) — stagger
+                section.querySelectorAll('div.grid').forEach(function (container) {
+                    staggerChildren(container, 65);
+                });
+
+                // ─ Linhas do acrônimo — stagger mais rápido
+                var acronymRows = section.querySelectorAll('.acronym-row');
+                acronymRows.forEach(function (el, i) {
+                    setup(el, i * 55);
+                });
+
+                // ─ Itens da lista de entregables (pricing)
+                section.querySelectorAll('ul > li').forEach(function (el, i) {
+                    setup(el, i * 90);
+                });
+
+                // ─ Divs de destaque (pricing box, image blocks)
+                section.querySelectorAll(':scope > div > div[class*="rounded"]').forEach(function (el) {
+                    setup(el, 100);
+                });
             });
         })();
     </script>
